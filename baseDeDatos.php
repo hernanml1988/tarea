@@ -44,26 +44,28 @@ if(isset($_POST["agregar"])){
     echo "<a href=index.php>Volver al inicio</a>";
 
     }else if (isset($_POST["actualizar"])){
-            if(!$conexion){
-                 echo "No hay conexion";    
-            }
-            $id = $_POST["id"];
-            $nombre= $_POST["nombre"];
-            $apellido= $_POST["apellido"];
-            $direccion= $_POST["direccion"];
+        if(!$conexion){
+            echo "no hay conexion";
+        }
 
-            $conexion = mysqli_connect($host, $usuario, $pass, $bd); 
-            $q = "UPDATE info_personal SET nombre= $nombre, apellido= $apellido, direccion= $direccion
-            WHERE id= $id " ;
-            $consulta = mysqli_query($conexion, $q );    
-            if ($consulta){  
-            echo "los datos se han actualizado correctamente </br>";
-            echo "<a href=actualizar.php>Desea actualizar otro personal</a>  </br>";
-            echo "<a href=index.php>Volver al inicio</a>";
-            }else{
-                    echo "NO HA PASADO NADA";
-            }
-            
+        $id = $_POST["id"];    
+        $nombre = $_POST["nombre"] ;
+        $apellido = $_POST["apellido"];
+        $direccion = $_POST["direccion"];
+
+        $conexion = mysqli_connect($host, $usuario, $pass, $bd);
+        $q = "UPDATE info_personal SET nombre = $nombre, apellido = $apellido, direccion = $direccion
+        WHERE id= $id";
+        $resultado= mysqli_query($conexion, $q);
+        echo $resultado;
+        if ($resultado){
+                echo "Actualizacion exitosa";    
+                echo "<a href=actualizar.php>Desea actualizar otro personal</a>  </br>";
+                echo "<a href=index.php>Volver al inicio</a>";
+        }
+        else {
+            echo "no pasa na";
+        }
     }
-
+    
 ?>
