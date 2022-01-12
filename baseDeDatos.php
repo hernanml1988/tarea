@@ -57,15 +57,12 @@ if(isset($_POST["agregar"])){
         $q = "UPDATE info_personal SET nombre = $nombre, apellido = $apellido, direccion = $direccion
         WHERE id= $id";
         $resultado= mysqli_query($conexion, $q);
-        echo $resultado;
         if ($resultado){
                 echo "Actualizacion exitosa";    
                 echo "<a href=actualizar.php>Desea actualizar otro personal</a>  </br>";
                 echo "<a href=index.php>Volver al inicio</a>";
         }
-        else {
-            echo "no pasa na";
-        }
+        
     }
     
 ?>
